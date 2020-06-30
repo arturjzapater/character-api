@@ -22,7 +22,6 @@ module.exports = {
             arrays: 'always-multiline',
             objects: 'always-multiline',
         }],
-        'no-console': 'error',
         'no-unused-vars': [ 'error', {
             args: 'after-used',
             'argsIgnorePattern': '^_',

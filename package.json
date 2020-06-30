@@ -4,10 +4,10 @@
   "description": "A REST API to serve information about characters in the Silmarillion.",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": ". ./.env node dist/server.js",
     "test": "mocha --reporter nyan tests/**/*.test.js",
     "test:watch": "mocha --reporter min --watch tests/**/*.test.js",
-    "dev": "nodemon --exec babel-node src/server.js",
+    "dev": ". ./.env && nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist"
   },
   "author": "SavagePixie",
