@@ -1,7 +1,7 @@
 const assert = require('assert')
 const paginate = require('../src/utils/paginate')
 
-const data = Array.from({ length: 200 }, (_, i) => ({ doc: i }))
+const total = 200
 
 describe('Paginate', () => {
     it('Given data, paginate returns an object page properties set', () => {
@@ -11,10 +11,9 @@ describe('Paginate', () => {
             current: 2,
             prev: 1,
             next: 3,
-            data: Array.from({ length: limit }, (_, i) => ({ doc: i + page * limit })),
         }
 
-        const result = paginate(limit)(page)(data)
+        const result = paginate(limit)(page)(total)
         assert.deepStrictEqual(result, expected)
     })
 
@@ -22,7 +21,7 @@ describe('Paginate', () => {
         const limit = 10
         const page = 0
 
-        const result = paginate(limit)(page)(data)
+        const result = paginate(limit)(page)(total)
         assert.equal(result.prev, null)
     })
 
@@ -30,7 +29,7 @@ describe('Paginate', () => {
         const limit = 100
         const page = 1
 
-        const result = paginate(limit)(page)(data)
+        const result = paginate(limit)(page)(total)
         assert.equal(result.next, null)
     })
 })
