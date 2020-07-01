@@ -1,5 +1,3 @@
 const F = require('fluture')
 
-const fluturise = fn => (...args) => F.node(done => fn(...args, done))
-
-module.exports = fluturise
+module.exports = fn => (...args) => F.node(done => fn(...args, done))

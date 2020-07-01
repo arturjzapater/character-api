@@ -1,6 +1,7 @@
 const fs = require('fs')
 
 const data = [{
+    id: 1,
     name: 'Feänor',
     aliases: [ 
         'Fëanáro',
@@ -15,6 +16,7 @@ const data = [{
         'Invent Tengwar script',
     ],
 },{
+    id: 2,
     name: 'Túrin',
     aliases: [ 'Turambar' ],
     race: 'human',
@@ -24,6 +26,7 @@ const data = [{
         'Chief counsellor of Orodreth',
     ],
 },{
+    id: 3,
     name: 'Lúthien',
     aliases: [ 'Tinúviel' ],
     race: 'elf',

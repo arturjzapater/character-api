@@ -5,8 +5,7 @@ const db = require('./db')
 const app = express()
 
 app.get('/api', (req, res) => {
-    db.findById('1')
-    |> F.map(JSON.parse)
+    db.insert({ carrots: 12, potatoes: 18 })
     |> F.fork(err => res.status(500).json(err))(data => res.status(200).json(data))
 })
 
