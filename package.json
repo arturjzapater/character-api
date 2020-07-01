@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": ". ./.env node dist/server.js",
-    "test": "mocha --reporter nyan tests/**/*.test.js",
-    "test:watch": "mocha --reporter min --watch tests/**/*.test.js",
+    "test": "mocha --reporter nyan --require @babel/register tests/**/*.test.js",
+    "test:watch": "mocha --reporter min --require @babel/register --watch tests/**/*.test.js",
     "dev": ". ./.env && nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist"
   },
@@ -22,6 +22,7 @@
     "@babel/core": "^7.10.3",
     "@babel/node": "^7.10.3",
     "@babel/plugin-proposal-pipeline-operator": "^7.10.1",
+    "@babel/register": "^7.10.4",
     "babel-eslint": "^10.1.0",
     "babel-preset-minify": "^0.5.1",
     "eslint": "^7.3.1",
