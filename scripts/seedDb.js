@@ -1,39 +1,5 @@
 const fs = require('fs')
-
-const data = [{
-    name: 'Feänor',
-    aliases: [ 
-        'Fëanáro',
-        'Curufinwë',
-        'Finwion',
-    ],
-    race: 'elf',
-    occupation: 'craftsman',
-    feats: [
-        'Craft silmarils',
-        'Craft palantíri',
-        'Invent Tengwar script',
-    ],
-},{
-    name: 'Túrin',
-    aliases: [ 'Turambar' ],
-    race: 'human',
-    occupation: 'warrior',
-    feats: [
-        'Knight of the sword',
-        'Chief counsellor of Orodreth',
-    ],
-},{
-    name: 'Lúthien',
-    aliases: [ 'Tinúviel' ],
-    race: 'elf',
-    occupation: 'princess',
-    feats: [
-        'Cause Morgoth and his court to fall asleep',
-        'Retrieve one silmaril together with Beren',
-        'Become mortal for love\'s sake',
-    ],
-}]
+const data = require('./seedData.json')
 
 data
     .map((x, i) => ({ _id: i + 1, ...x }))

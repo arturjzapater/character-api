@@ -1,0 +1,101 @@
+[{
+    "name": "Antar",
+    "aliases": [ 
+        "Longhand",
+        "Fire Knight"
+    ],
+    "race": "elf",
+    "occupation": "warrior",
+    "feats": [
+        "Defeat red goblin",
+        "Rescue Anthalion"
+    ]
+},{
+    "name": "Toran",
+    "aliases": [],
+    "race": "human",
+    "occupation": "warrior",
+    "feats": [
+        "Knight of the cape"
+    ]
+},{
+    "name": "Liana",
+    "aliases": [ "Daergen" ],
+    "race": "elf",
+    "occupation": "princess",
+    "feats": [
+        "Rally the Free Cities against the forces of Marae",
+        "Defeat red goblin"
+    ]
+},{
+    "name": "Area",
+    "aliases": [ "Greycloak" ],
+    "race": "human",
+    "occupation": "wanderer",
+    "feats": []
+},{
+    "name": "Leran",
+    "aliases": [],
+    "race": "human",
+    "occupation": "blacksmith",
+    "feats": []
+},{
+    "name": "Olorin",
+    "aliases": [
+        "Redhand",
+        "Black sword"
+    ],
+    "race": "human",
+    "occupation": "warrior",
+    "feats": [
+        "Sack Troe"
+    ]
+},{
+    "name": "Erein",
+    "aliases": [],
+    "race": "human",
+    "occupation": "healer",
+    "feats": [
+        "Save Daergen from certain death"
+    ]
+},{
+    "name": "Toran",
+    "aliases": [ "The wise" ],
+    "race": "human",
+    "occupation": "monk",
+    "feats": [
+        "Invent Doria script",
+        "Write 'The Peace of the Soul'"
+    ]
+},{
+    "name": "Liren",
+    "aliases": [],
+    "race": "elf",
+    "occupation": "scholar",
+    "feats": []
+},{
+    "name": "Orolic",
+    "aliases": [ "Goodeye" ],
+    "race": "human",
+    "occupation": "archer",
+    "feats": [
+        "Win the king's archery tournament"
+    ]
+},{
+    "name": "Loran",
+    "aliases": [],
+    "race": "human",
+    "occupation": "minstrel",
+    "feats": [
+        "Get reinvited to sing for Princess Daergen",
+        "Improve mandoline's design"
+    ]
+},{
+    "name": "Rin",
+    "aliases": [],
+    "race": "human",
+    "occupation": "wanderer",
+    "feats": [
+        "Defeat red king"
+    ]
+}]
