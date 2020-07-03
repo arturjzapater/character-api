@@ -1,16 +1,15 @@
 const F = require('fluture')
-const R = require('ramda')
 const db = require('../../db')
-const paginate = require('../../utils/paginate')(process.env.LIMIT)
+const addPageInfo = require('../../utils/addPageInfo')
 
 const { LIMIT: limit } = process.env
 
 const handleGetAll = (req, res, next) => {
     const page = req.query.page || 0
     const start = page * limit
+    
     return db.find({ limit, start })
-    |> F.map(results => ({ results }))
-    |> F.map(R.mergeRight(paginate(page)(db.getCount())))
+    |> F.map(addPageInfo(limit, page, db.getCount()))
     |> F.fork(next)(data => res.status(200).json(data))
 }
 
