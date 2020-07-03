@@ -22,6 +22,7 @@ module.exports = {
             arrays: 'always-multiline',
             objects: 'always-multiline',
         }],
+        'eol-last': [ 'error', 'always' ],
         'no-unused-vars': [ 'error', {
             args: 'after-used',
             'argsIgnorePattern': '^_',
