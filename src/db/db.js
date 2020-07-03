@@ -8,7 +8,7 @@ const getCount = () => getFileList()
 
 const remove = id => ffs.unlink(`data/${id}`)
 
-const findById = id => ffs.readFile(`data/${id}`)
+const findById = id => ffs.readFile(`data/${id}`, 'utf-8')
 |> F.map(JSON.parse)
 
 const find = ({ limit = 10, start = 0 } = {}) => getFileList()
@@ -21,7 +21,7 @@ const insert = data => getLastId()
 |> F.chain(createDocument(data))
 
 const update = (id, data) => findById(id)
-|> F.map(x => ({ ...x, ...data }))
+|> F.map(R.mergeLeft(data))
 |> F.map(JSON.stringify)
 |> F.chain(x => ffs.writeFile(`data/${id}`, x))
 
