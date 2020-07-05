@@ -24,4 +24,4 @@ All documents submitted via `POST` and `PUT` requests must include the following
 - `name`: a `string` specifying the character's name.
 - `aliases`: an `array` indicating the character's aliases if any. It can be empty.
 - `feats`: an `array` indicating important achievements of the character. It can be empty.
-- `occupation`: a `string indicating the character's occupation.
+- `occupation`: a `string` indicating the character's occupation.
