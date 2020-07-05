@@ -11,7 +11,7 @@ const addPagePaths = obj => ({
     next: addPath(obj.next),
 })
 
-module.exports = (limit, page, count) => results =>
+module.exports = (limit, page) => ([ count, results ]) =>
     paginate(limit)(parseInt(page))(count)
     |> addPagePaths
     |> R.mergeLeft({ results })

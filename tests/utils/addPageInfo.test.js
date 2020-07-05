@@ -23,7 +23,7 @@ describe('addPageInfo', () => {
             results: data,
         }
 
-        const result = addPageInfo(limit, page, count)(data)
+        const result = addPageInfo(limit, page)([ count, data ])
         assert.deepStrictEqual(result, expected)
     })
 
@@ -32,7 +32,7 @@ describe('addPageInfo', () => {
         const count = 30
         const limit = 10
         
-        const result = addPageInfo(limit, page, count)(data)
+        const result = addPageInfo(limit, page)([ count, data ])
         assert.strictEqual(result.next, null)
     })
 
@@ -41,7 +41,7 @@ describe('addPageInfo', () => {
         const count = 30
         const limit = 10
         
-        const result = addPageInfo(limit, page, count)(data)
+        const result = addPageInfo(limit, page)([ count, data ])
         assert.strictEqual(result.prev, null)
     })
 })

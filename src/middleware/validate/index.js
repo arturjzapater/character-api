@@ -1,16 +1,16 @@
 const R = require('ramda')
 
 const propMap = [
-    [ 'name', String ],
-    [ 'aliases', Array ],
-    [ 'occupation', String ],
-    [ 'feats', Array ],
+    [ String, 'name' ],
+    [ Array, 'aliases' ],
+    [ String, 'occupation' ],
+    [ Array, 'feats' ],
 ]
 
+const checkType = doc => prop => R.propIs(...prop, doc)
+
 module.exports = (req, res, next) => {
-    if (propMap.every(([ p, t ]) => R.propIs(t, p, req.body))) {
-        next()
-    } else {
-        next({ code: 400, message: 'Bad Request' })
-    }
+    R.all(checkType(req.body), propMap)
+        ? next()
+        : next({ code: 400, message: 'Bad Request' })
 }
