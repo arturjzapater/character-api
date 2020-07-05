@@ -1,5 +1,5 @@
 const assert = require('assert')
-const addPageInfo = require('../src/utils/addPageInfo')
+const addPageInfo = require('utils/addPageInfo')
 
 const data = [{
     a: 1,
@@ -19,6 +19,7 @@ describe('addPageInfo', () => {
             current: 1,
             next: '/api/characters/?page=2',
             prev: '/api/characters/?page=0',
+            count,
             results: data,
         }
 
@@ -28,7 +29,7 @@ describe('addPageInfo', () => {
 
     it('If there is no next page, the value is null', () => {
         const page = 2
-        const count =30
+        const count = 30
         const limit = 10
         
         const result = addPageInfo(limit, page, count)(data)
@@ -37,7 +38,7 @@ describe('addPageInfo', () => {
 
     it('If there is not previous page, the value is null', () => {
         const page = 0
-        const count =30
+        const count = 30
         const limit = 10
         
         const result = addPageInfo(limit, page, count)(data)

@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const validate = require('../../middleware/validate')
 const {
     handleGetAll,
     handleGetOne,
@@ -10,12 +11,12 @@ const {
 
 router.route('/characters')
     .get(handleGetAll)
-    .post(handlePost)
+    .post(validate, handlePost)
     .all(handleWrongMethod([ 'GET', 'POST' ]))
 
 router.route('/characters/:id')
     .get(handleGetOne)
-    .put(handleUpdateOne)
+    .put(validate, handleUpdateOne)
     .delete(handleDeleteOne)
     .all(handleWrongMethod([ 'GET', 'PUT', 'DELETE' ]))
 

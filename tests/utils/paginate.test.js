@@ -1,5 +1,5 @@
 const assert = require('assert')
-const paginate = require('../src/utils/paginate')
+const paginate = require('utils/paginate')
 
 const total = 200
 
@@ -11,6 +11,7 @@ describe('Paginate', () => {
             current: 2,
             prev: 1,
             next: 3,
+            count: total,
         }
 
         const result = paginate(limit)(page)(total)

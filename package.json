@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": ". ./.env node dist/server.js",
-    "test": "mocha --reporter nyan --require @babel/register tests/**/*.test.js",
-    "test:watch": "mocha --reporter min --require @babel/register --watch tests/**/*.test.js",
+    "test": "NODE_PATH=src mocha --reporter nyan --require @babel/register tests/**/*.test.js",
+    "test:watch": "NODE_PATH=src mocha --reporter min --require @babel/register --watch tests/**/*.test.js",
     "dev": ". ./.env && nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist"
   },

@@ -8,8 +8,8 @@ const handleGetAll = (req, res, next) => {
     const page = req.query.page || 0
     const start = page * limit
     
-    return db.find({ limit, start })
-    |> F.map(addPageInfo(limit, page, db.getCount()))
+    return F.both(db.find({ limit, start }))(db.getCount())
+    |> F.map(([ data, total ]) => addPageInfo(limit, page, total)(data))
     |> F.fork(next)(data => res.status(200).json(data))
 }
 
