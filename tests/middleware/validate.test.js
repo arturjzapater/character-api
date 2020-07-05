@@ -1,6 +1,11 @@
 const assert = require('assert')
 const validate = require('middleware/validate')
 
+const badRequest = {
+    code: 400,
+    message: 'Bad Request',
+}
+
 describe('Validate', () => {
     it('calls next if validation passes', done => {
         const req = {
@@ -24,12 +29,8 @@ describe('Validate', () => {
                 name: 'John',
             },
         }
-        const expected = {
-            code: 400,
-            message: 'Bad Request',
-        }
         const nextNotOk = error => {
-            assert.deepStrictEqual(error, expected)
+            assert.deepStrictEqual(error, badRequest)
             done()
         }
         validate(req, {}, nextNotOk)
@@ -44,12 +45,24 @@ describe('Validate', () => {
                 feats: [ 'serve good beer' ],
             },
         }
-        const expected = {
-            code: 400,
-            message: 'Bad Request',
+        const nextNotOk = error => {
+            assert.deepStrictEqual(error, badRequest)
+            done()
+        }
+        validate(req, {}, nextNotOk)
+    })
+
+    it('fails when name is an empty string', done => {
+        const req = {
+            body: {
+                name: '',
+                aliases: [],
+                occupation: 'potato',
+                feats: [],
+            },
         }
         const nextNotOk = error => {
-            assert.deepStrictEqual(error, expected)
+            assert.deepStrictEqual(error, badRequest)
             done()
         }
         validate(req, {}, nextNotOk)

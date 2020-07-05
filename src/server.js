@@ -1,7 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-// const F = require('fluture')
-// const db = require('./db')
 const { error } = require('./middleware')
 const { api } = require('./routes')
 
