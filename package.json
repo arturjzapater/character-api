@@ -1,7 +1,7 @@
 {
   "name": "character-api",
   "version": "1.0.0",
-  "description": "A REST API to serve information about your favourite characters.",
+  "description": "A REST API to serve information about your favourite characters",
   "main": "index.js",
   "scripts": {
     "start": ". ./.env node dist/server.js",
@@ -11,6 +11,11 @@
     "build": "babel src --out-dir dist"
   },
   "author": "SavagePixie",
+  "homepage": "https://github.com/SavagePixie/character-api#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SavagePixie/character-api"
+  },
   "license": "MIT",
   "dependencies": {
     "@babel/preset-env": "^7.10.4",
