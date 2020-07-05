@@ -67,4 +67,20 @@ describe('Validate', () => {
         }
         validate(req, {}, nextNotOk)
     })
+
+    it('fails when occupation is an empty string', done => {
+        const req = {
+            body: {
+                name: 'John',
+                aliases: [],
+                occupation: '',
+                feats: [],
+            },
+        }
+        const nextNotOk = error => {
+            assert.deepStrictEqual(error, badRequest)
+            done()
+        }
+        validate(req, {}, nextNotOk)
+    })
 })
