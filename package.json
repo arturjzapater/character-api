@@ -10,11 +10,11 @@
     "dev": ". ./.env && nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist"
   },
-  "author": "SavagePixie",
-  "homepage": "https://github.com/SavagePixie/character-api#readme",
+  "author": "Artur J Zapater",
+  "homepage": "https://github.com/arturjzapater/character-api#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SavagePixie/character-api"
+    "url": "https://github.com/arturjzapater/character-api"
   },
   "license": "MIT",
   "dependencies": {
