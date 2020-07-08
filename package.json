@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": ". ./.env node dist/server.js",
-    "test": "NODE_PATH=src mocha --reporter nyan --require @babel/register tests/**/*.test.js",
-    "test:watch": "NODE_PATH=src mocha --reporter min --require @babel/register --watch tests/**/*.test.js",
+    "test": "NODE_PATH=src mocha --reporter nyan --require @babel/register tests/unit/**/*.test.js",
+    "test:watch": "NODE_PATH=src mocha --reporter min --require @babel/register --watch tests/unit/**/*.test.js",
+    "e2e": "NODE_PATH=src DB=test-data LIMIT=5 mocha --reporter nyan --require @babel/register tests/e2e/**/*.e2e.js",
     "dev": ". ./.env && nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist"
   },
@@ -33,6 +34,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.3.1",
     "mocha": "^8.0.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }

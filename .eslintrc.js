@@ -23,6 +23,7 @@ module.exports = {
             objects: 'always-multiline',
         }],
         'eol-last': [ 'error', 'always' ],
+        'no-prototype-builtins': 0,
         'no-unused-vars': [ 'error', {
             args: 'after-used',
             'argsIgnorePattern': '^_',
