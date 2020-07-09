@@ -9,9 +9,9 @@ const { DB = 'data' } = process.env
 const getCount = () => getFileList()
 |> F.map(R.length)
 
-const remove = id => ffs.unlink(path.join(DB, id))
+const remove = id => ffs.unlink(path.join(DB, id.toString()))
 
-const findById = id => ffs.readFile(path.join(DB, id), 'utf-8')
+const findById = id => ffs.readFile(path.join(DB, id.toString()), 'utf-8')
 |> F.map(JSON.parse)
 
 const find = ({ limit = 10, start = 0 } = {}) => getFileList()
@@ -26,7 +26,7 @@ const insert = data => getLastId()
 const update = (id, data) => findById(id)
 |> F.map(R.mergeLeft(data))
 |> F.map(JSON.stringify)
-|> F.chain(x => ffs.writeFile(path.join(DB, id), x))
+|> F.chain(x => ffs.writeFile(path.join(DB, id.toString()), x))
 
 module.exports = {
     find,

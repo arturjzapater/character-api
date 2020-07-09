@@ -40,3 +40,32 @@ describe('GET /api/characters', () => {
             })
     })
 })
+
+describe('POST /api/characters', () => {
+    it('responds with 201 on success', done => {
+        request(app)
+            .post('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({ 
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(201, done)
+    })
+
+    it('responds with the location of the new document', done => {
+        request(app)
+            .post('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect('Location', /\/api\/characters\/\d+/)
+            .expect(201, done)
+    })
+})

@@ -10,12 +10,16 @@ const appendId = data => _id => ({
     ...data,
 })
 
+const diff = (a, b) => a - b
+
 const createDocument = data => id => appendId(data)(id)
 |> JSON.stringify
-|> (x => ffs.writeFile(path.join(DB, id), x))
+|> (x => ffs.writeFile(path.join(DB, id.toString()), x))
 |> F.map(() => id)
 
 const getFileList = () => ffs.readdir('data')
+|> F.map(R.map(Number))
+|> F.map(R.sort(diff))
 
 const getLastId = () => getFileList()
 |> F.map(R.last)
