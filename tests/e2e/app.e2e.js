@@ -1,6 +1,23 @@
 const assert = require('assert')
+const fs = require('fs')
 const request = require('supertest')
 const app = require('app')
+
+const { DB } = process.env
+
+const clearDB = () => {
+    fs.readdir(DB, (err, files) => {
+        if (err) throw err
+        
+        files
+            .filter(x => Number(x) > 12)
+            .forEach(x => {
+                fs.unlink(`${DB}/${x}`, err2 => {
+                    if (err2) throw err2
+                }) 
+            })
+    })
+}
 
 describe('GET /api/characters', () => {
     it('responds with JSON', done => {
@@ -42,6 +59,10 @@ describe('GET /api/characters', () => {
 })
 
 describe('POST /api/characters', () => {
+    beforeEach(() => {
+        clearDB()
+    })
+
     it('responds with 201 on success', done => {
         request(app)
             .post('/api/characters')
@@ -67,5 +88,43 @@ describe('POST /api/characters', () => {
             })
             .expect('Location', /\/api\/characters\/\d+/)
             .expect(201, done)
+    })
+
+    it('accepts extra fields', done => {
+        request(app)
+            .post('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+                granddaugther: 'Lilly',
+                favouriteBook: 'The Neverending Story',
+            })
+            .expect(201, done)
+    })
+
+    it('responds with 400 on missing fields', done => {
+        request(app)
+            .post('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'Jerry',
+            })
+            .expect(400, done)
+    })
+
+    it('responds with 400 on wrong type input', done => {
+        request(app)
+            .post('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: 'Jim',
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(400, done)
     })
 })

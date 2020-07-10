@@ -17,13 +17,12 @@ const createDocument = data => id => appendId(data)(id)
 |> (x => ffs.writeFile(path.join(DB, id.toString()), x))
 |> F.map(() => id)
 
-const getFileList = () => ffs.readdir('data')
+const getFileList = () => ffs.readdir(DB)
 |> F.map(R.map(Number))
 |> F.map(R.sort(diff))
 
 const getLastId = () => getFileList()
 |> F.map(R.last)
-|> F.map(Number)
 
 const slice = (start, end) => xs => xs.slice(start, end)
 
