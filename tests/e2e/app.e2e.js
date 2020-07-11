@@ -158,3 +158,33 @@ describe('PUT /api/character', () => {
             .expect(405, done)
     })
 })
+
+describe('DELETE /api/character', () => {
+    it('responds with 405', done => {
+        request(app)
+            .put('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(405, done)
+    })
+
+    it('responds with a list of allowed methods', done => {
+        request(app)
+            .put('/api/characters')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect('Allow', /GET/)
+            .expect('Allow', /POST/)
+            .expect(405, done)
+    })
+})
