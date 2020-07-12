@@ -129,7 +129,7 @@ describe('POST /api/characters', () => {
     })
 })
 
-describe('PUT /api/character', () => {
+describe('PUT /api/characters', () => {
     it('responds with 405', done => {
         request(app)
             .put('/api/characters')
@@ -159,7 +159,7 @@ describe('PUT /api/character', () => {
     })
 })
 
-describe('DELETE /api/character', () => {
+describe('DELETE /api/characters', () => {
     it('responds with 405', done => {
         request(app)
             .put('/api/characters')
