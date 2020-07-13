@@ -31,3 +31,34 @@ describe('GET /api/characters/:id', () => {
             .expect(404, done)
     })
 })
+
+describe('POST /api/characters/:id', () => {
+    it('responds with 405', done => {
+        request(app)
+            .post('/api/characters/1')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(405, done)
+    })
+
+    it('responds with a list of allowed methods', done => {
+        request(app)
+            .post('/api/characters/1')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect('Allow', /GET/)
+            .expect('Allow', /PUT/)
+            .expect('Allow', /DELETE/)
+            .expect(405, done)
+    })
+})
