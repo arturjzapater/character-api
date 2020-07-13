@@ -1,25 +1,14 @@
 const assert = require('assert')
-const fs = require('fs')
 const request = require('supertest')
 const app = require('app')
-
-const { DB } = process.env
-
-const clearDB = () => {
-    fs.readdir(DB, (err, files) => {
-        if (err) throw err
-        
-        files
-            .filter(x => Number(x) > 12)
-            .forEach(x => {
-                fs.unlink(`${DB}/${x}`, err2 => {
-                    if (err2) throw err2
-                }) 
-            })
-    })
-}
+const prepare = require('./prepare')
 
 describe('GET /api/characters', () => {
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
+    })
+
     it('responds with JSON', done => {
         request(app)
             .get('/api/characters')
@@ -59,8 +48,9 @@ describe('GET /api/characters', () => {
 })
 
 describe('POST /api/characters', () => {
-    beforeEach(() => {
-        clearDB()
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
     })
 
     it('responds with 201 on success', done => {

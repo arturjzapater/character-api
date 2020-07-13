@@ -1,11 +1,15 @@
 const assert = require('assert')
-const fs = require('fs')
 const request = require('supertest')
 const app = require('app')
-
-const { DB } = process.env
+const prepare = require('./prepare')
+const data = require('../testData/data.json')
 
 describe('GET /api/characters/:id', () => {
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
+    })
+
     it('responds with 200 on success', done => {
         request(app)
             .get('/api/characters/1')
@@ -14,15 +18,11 @@ describe('GET /api/characters/:id', () => {
     })
 
     it('responds with the document asked for', () => {
-        fs.readFile(`${DB}/1`, (err, file) => {
-            if (err) throw err
-            const expect = JSON.parse(file)
-            request(app)
-                .get('/api/characters/1')
-                .then(({ body: res }) => {
-                    assert.deepStrictEqual(res, expect)
-                })
-        })
+        request(app)
+            .get('/api/characters/1')
+            .then(({ body: res }) => {
+                assert.deepStrictEqual(res, { _id: 1, ...data[0] })
+            })
     })
 
     it('responds with 404 if the document doesn\'t exist', done => {
@@ -33,6 +33,11 @@ describe('GET /api/characters/:id', () => {
 })
 
 describe('POST /api/characters/:id', () => {
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
+    })
+    
     it('responds with 405', done => {
         request(app)
             .post('/api/characters/1')
