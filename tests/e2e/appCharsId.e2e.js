@@ -67,3 +67,35 @@ describe('POST /api/characters/:id', () => {
             .expect(405, done)
     })
 })
+
+describe('PUT /api/characters/:id', () => {
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
+    })
+
+    it('responds with 204', done => {
+        request(app)
+            .put('/api/characters/1')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                aliases: [ 'Jim' ],
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(204, done)
+    })
+
+    it('responds with 400 on bad input', done => {
+        request(app)
+            .put('/api/characters/1')
+            .set('Content-Type', 'application/json')
+            .send({
+                name: 'John',
+                occupation: 'baker',
+                feats: [ 'Bake bread' ],
+            })
+            .expect(400, done)
+    })
+})
