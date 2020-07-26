@@ -99,3 +99,38 @@ describe('PUT /api/characters/:id', () => {
             .expect(400, done)
     })
 })
+
+describe('DELETE /api/characters/:id', () => {
+    beforeEach(done => {
+        prepare()
+            .then(() => done())
+    })
+
+    it('responds with 204', done => {
+        request(app)
+            .delete('/api/characters/1')
+            .expect(204, done)
+    })
+
+    it('responds with 404 if document doesn\'t exist', done => {
+        request(app)
+            .delete('/api/characters/1')
+            .expect(204)
+            .end(() => {
+                request(app)
+                .delete('/api/charracters/1')
+                .expect(404, done)
+            })
+    })
+
+    it('successfully deletes document', done => {
+        request(app)
+            .delete('/api/characters/1')
+            .expect(204)
+            .end(() => {
+                request(app)
+                .get('/api/charracters/1')
+                .expect(404, done)
+            })
+    })
+})
