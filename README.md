@@ -25,3 +25,11 @@ All documents submitted via `POST` and `PUT` requests must include the following
 - `aliases`: an `array` indicating the character's aliases if any. It can be empty.
 - `feats`: an `array` indicating important achievements of the character. It can be empty.
 - `occupation`: a `string` indicating the character's occupation.
+
+## Requirements
+
+To use this application you will need Node >= 12
+
+## Installation
+
+Clone the project and install its dependencies:

@@ -1,6 +1,10 @@
 const fs = require('fs')
 const data = require('./seedData.json')
 
+const dir = '../data'
+
+if (!fs.existsSync(dir)) fs.mkdirSync(dir)
+
 data
     .map((x, i) => ({ _id: i + 1, ...x }))
     .map(JSON.stringify)
@@ -10,5 +14,3 @@ data
             else console.log(`File ${i + 1} written successfully`)
         })
     })
-
-console.log('Done seeding')
