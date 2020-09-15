@@ -10,3 +10,5 @@ data
             else console.log(`File ${i + 1} written successfully`)
         })
     })
+
+console.log('Done seeding')
