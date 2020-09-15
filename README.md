@@ -33,3 +33,33 @@ To use this application you will need Node >= 12
 ## Installation
 
 Clone the project and install its dependencies:
+```bash
+git clone git@github.com:arturjzapater/character-api.git
+cd character-api
+npm i
+```
+
+Create a copy of the `.env` file:
+```bash
+cp -a .env.example .env
+```
+
+Seed database:
+```bash
+npm run seed
+```
+
+Start the server in development mode:
+```bash
+npm run dev
+```
+
+## Available Scripts
+
+- `test`: run unit tests
+- `test:watch`: run unit tests on watch mode
+- `e2e`: run end-to-end tests
+- `dev`: run the server in development mode
+- `build`: build the files with babel
+- `start`: build and start the server in production mode
+- `seed`: add some mock data to the database

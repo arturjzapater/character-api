@@ -4,7 +4,8 @@
   "description": "A REST API to serve information about your favourite characters",
   "main": "index.js",
   "scripts": {
-    "start": ". ./.env node dist/server.js",
+    "start": ". ./.env && node dist/server.js",
+    "prestart": "npm run build",
     "test": "NODE_PATH=src mocha --reporter nyan --require @babel/register tests/unit/**/*.test.js",
     "test:watch": "NODE_PATH=src mocha --reporter min --require @babel/register --watch tests/unit/**/*.test.js",
     "e2e": "NODE_PATH=src DB=test-data LIMIT=5 mocha --reporter nyan --require @babel/register tests/e2e/**/*.e2e.js",
