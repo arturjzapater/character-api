@@ -1,5 +1,5 @@
-const express = require('express')
 const bodyParser = require('body-parser')
+const express = require('express')
 const { error } = require('./middleware')
 const { api } = require('./routes')
 
